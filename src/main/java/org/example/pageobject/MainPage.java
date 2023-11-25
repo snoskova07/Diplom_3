@@ -1,11 +1,12 @@
 package org.example.pageobject;
+import io.qameta.allure.Step;
 import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
-import static org.example.config.PageUrl.BASE_URL;
+import static org.example.config.ui.PageUrl.BASE_URL;
 
 public class MainPage {
 
@@ -44,51 +45,61 @@ public class MainPage {
     }
 
     //Методы
+    @Step("Нажатие на кнопку Войти в аккаунт")
     public void clickLoginToAccountButton() {
+        new WebDriverWait(webDriver, (6)).until(ExpectedConditions.elementToBeClickable(loginToAccountButton));
         JavascriptExecutor executor = (JavascriptExecutor) webDriver;
         WebElement button = webDriver.findElement(loginToAccountButton);
         executor.executeScript("arguments[0].click()", button);
     }
-
+    @Step("Нажатие на кнопку Личный кабинет")
     public void clickPersonalAccountButton() {
-        new WebDriverWait(webDriver, (5)).until(ExpectedConditions.elementToBeClickable(personalAccountButton));
+        new WebDriverWait(webDriver, (10)).until(ExpectedConditions.presenceOfElementLocated(personalAccountButton));
         JavascriptExecutor executor = (JavascriptExecutor) webDriver;
         WebElement button = webDriver.findElement(personalAccountButton);
         executor.executeScript("arguments[0].click()", button);
     }
 
     //Клик по bunTitle
+    @Step("Нажатие на контрол Булки")
     public void clickBunControl() {
+        new WebDriverWait(webDriver, (6)).until(ExpectedConditions.elementToBeClickable(bunControl));
         JavascriptExecutor executor = (JavascriptExecutor) webDriver;
         WebElement bun = webDriver.findElement(bunControl);
         executor.executeScript("arguments[0].click()", bun);
     }
 
     //Клик по sauceTitle
+    @Step("Нажатие на контрол Соусы")
     public void clickSauceControl() {
+        new WebDriverWait(webDriver, (6)).until(ExpectedConditions.elementToBeClickable(sauceControl));
         JavascriptExecutor executor = (JavascriptExecutor) webDriver;
         WebElement sauce = webDriver.findElement(sauceControl);
         executor.executeScript("arguments[0].click()", sauce);
     }
 
     //Клик по mainTitle
+    @Step("Нажатие на контрол Начинки")
     public void clickMainControl() {
+        new WebDriverWait(webDriver, (6)).until(ExpectedConditions.elementToBeClickable(mainControl));
         JavascriptExecutor executor = (JavascriptExecutor) webDriver;
         WebElement main = webDriver.findElement(mainControl);
         executor.executeScript("arguments[0].click()", main);
     }
 
     // метод проверяет, что выбрана секция Булки
+    @Step("Проверка, что выбрана секция Булки")
     public boolean checkBunIsEnabled() {
         return webDriver.findElement(bunTitle).isDisplayed();
     }
 
     // метод проверяет, что выбрана секция Начинки
+    @Step("Проверка, что выбрана секция Начинки")
     public boolean checkMainIsEnabled() {
         return webDriver.findElement(mainTitle).isDisplayed();
 
     }
-
+    @Step("Проверка, что выбрана секция Соусы")
     // метод проверяет, что выбрана секция Соусы
     public boolean checkSauceIsEnabled() {
         return webDriver.findElement(sauceTitle).isDisplayed();

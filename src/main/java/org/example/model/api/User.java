@@ -1,4 +1,4 @@
-package org.example.apiModel;
+package org.example.model.api;
 public class User {
     private String email;
 

@@ -1,43 +1,28 @@
 package org.example;
 
 import io.qameta.allure.junit4.DisplayName;
-import org.example.config.SeleniumConfig;
-import org.example.pageobject.MainPage;
-import org.junit.After;
-import org.junit.Before;
 import org.junit.Test;
-import org.openqa.selenium.WebDriver;
+import static org.example.config.ui.PageUrl.BASE_URL;
 
-public class ConstructorTest {
-    WebDriver webDriver;
-    SeleniumConfig config;
-    MainPage mainPage;
-    @Before
-    public void setup() {
-        config = new SeleniumConfig();
-        webDriver = config.setup();
-        mainPage = new MainPage(webDriver);
-    }
-    @After
-    public void closeBrowser() {
-        webDriver.quit();
-    }
-
+public class ConstructorTest extends BaseTest {
     @Test
     @DisplayName("Переход на Начинки")
     public void Main() {
+        webDriver.get(BASE_URL);
         mainPage.clickMainControl();
         mainPage.checkMainIsEnabled();
     }
     @Test
     @DisplayName("Переход на Соусы")
     public void Sauce() {
+        webDriver.get(BASE_URL);
         mainPage.clickSauceControl();
         mainPage.checkSauceIsEnabled();
     }
     @Test
     @DisplayName("Переход на Булки")
     public void Bun() {
+        webDriver.get(BASE_URL);
         mainPage.clickBunControl();
         mainPage.checkBunIsEnabled();
     }

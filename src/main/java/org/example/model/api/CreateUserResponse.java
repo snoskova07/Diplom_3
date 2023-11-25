@@ -1,13 +1,9 @@
-package org.example.apiModel;
+package org.example.model.api;
 
-public class LoginUserResponse {
-
+public class CreateUserResponse {
     private Boolean success;
-
     private User user;
-
     private String accessToken;
-
     private String refreshToken;
     private String message;
 

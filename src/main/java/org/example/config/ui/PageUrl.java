@@ -1,4 +1,4 @@
-package org.example.config;
+package org.example.config.ui;
 
 public class PageUrl {
     public static final String BASE_URL = "https://stellarburgers.nomoreparties.site";

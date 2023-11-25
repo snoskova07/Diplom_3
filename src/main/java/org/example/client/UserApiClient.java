@@ -1,16 +1,16 @@
-package org.example.api;
+package org.example.client;
 import io.qameta.allure.Step;
 import io.restassured.filter.log.RequestLoggingFilter;
 import io.restassured.filter.log.ResponseLoggingFilter;
 import io.restassured.http.ContentType;
 import io.restassured.response.Response;
-import org.example.apiModel.CreateUserRequest;
-import org.example.apiModel.CreateUserResponse;
-import org.example.apiModel.LoginUserRequest;
-import org.example.apiModel.LoginUserResponse;
+import org.example.model.api.CreateUserRequest;
+import org.example.model.api.CreateUserResponse;
+import org.example.model.api.LoginUserRequest;
+
 import static io.restassured.RestAssured.given;
-import static org.example.config.ApiUrl.*;
-public class UserApi {
+import static org.example.config.api.ApiUrl.*;
+public class UserApiClient {
 
     @Step("Отправка API запроса на создание пользователя")
     public String createUser(CreateUserRequest createUserRequest) {

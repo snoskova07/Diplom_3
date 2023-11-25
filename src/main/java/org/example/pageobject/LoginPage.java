@@ -1,18 +1,13 @@
 package org.example.pageobject;
+import io.qameta.allure.Step;
 import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
-import org.openqa.selenium.support.ui.ExpectedConditions;
-import org.openqa.selenium.support.ui.WebDriverWait;
 
-import static org.example.config.PageUrl.LOGIN_URL;
 public class LoginPage {
 
     WebDriver webDriver;
-    public LoginPage(WebDriver webDriver) {
-        this.webDriver = webDriver;
-    }
 
     // Локаторы
     private By emailInput = By.xpath("//input[@name = 'name']");
@@ -20,7 +15,12 @@ public class LoginPage {
     private By loginButton = By.xpath(".//button[@class = 'button_button__33qZ0 button_button_type_primary__1O7Bx button_button_size_medium__3zxIa']");
     private By logoHeader = By.xpath(".//a[@href = '/']");
 
-//Getters
+    //Конструктор
+    public LoginPage(WebDriver webDriver) {
+        this.webDriver = webDriver;
+    }
+
+    //Getters
     public By getEmailInput() {
         return emailInput;
     }
@@ -34,18 +34,23 @@ public class LoginPage {
     }
 
     //Методы
+    @Step("Ввод email")
     public void addEmail(String email) {
         webDriver.findElement(emailInput).sendKeys(email);
     }
+
+    @Step("Ввод пароля")
     public void addPassword(String password) {
         webDriver.findElement(passwordInput).sendKeys(password);
     }
+
+    @Step("Нажатие на кнопку Войти")
     public void clickLoginButton() {
         JavascriptExecutor executor = (JavascriptExecutor) webDriver;
         WebElement button = webDriver.findElement(loginButton);
         executor.executeScript("arguments[0].click()", button);
     }
-
+    @Step("Нажатие на Лого")
     public void clickLogo() {
         JavascriptExecutor executor = (JavascriptExecutor) webDriver;
         WebElement logo = webDriver.findElement(logoHeader);

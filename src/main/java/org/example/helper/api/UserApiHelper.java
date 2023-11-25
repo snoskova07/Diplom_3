@@ -1,13 +1,14 @@
-package org.example.helper;
+package org.example.helper.api;
 
-import org.example.api.UserApi;
-import org.example.apiModel.CreateUserRequest;
+import org.example.client.UserApiClient;
+import org.example.helper.ui.GeneratorHelper;
+import org.example.model.api.CreateUserRequest;
 
 public class UserApiHelper {
     GeneratorHelper generatorHelper;
     String accessToken;
     CreateUserRequest createUserRequest;
-    UserApi sendRequest;
+    UserApiClient sendRequest;
     String name;
     String email;
     String password;
@@ -21,7 +22,7 @@ public class UserApiHelper {
         return createUserRequest;
     }
 
-    public UserApi getSendRequest() {
+    public UserApiClient getSendRequest() {
         return sendRequest;
     }
 
@@ -47,7 +48,7 @@ public class UserApiHelper {
 
     public void createUser() {
         this.generateUserCredentials();
-        sendRequest = new UserApi();
+        sendRequest = new UserApiClient();
         createUserRequest = new CreateUserRequest(email, password, name);
         accessToken = sendRequest.createUser(createUserRequest);
     }

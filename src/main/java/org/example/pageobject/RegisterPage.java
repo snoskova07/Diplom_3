@@ -1,11 +1,12 @@
 package org.example.pageobject;
 
+import io.qameta.allure.Step;
 import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 
-import static org.example.config.PageUrl.REGISTER_URL;
+import static org.example.config.ui.PageUrl.REGISTER_URL;
 
 public class RegisterPage {
     WebDriver webDriver;
@@ -46,21 +47,27 @@ public class RegisterPage {
     }
 
     //Методы
+    @Step("Ввод имени")
      public void addName(String name) {
         webDriver.findElement(nameInput).sendKeys(name);
     }
 
+    @Step("Ввод email")
     public void addEmail(String email) {
         webDriver.findElement(emailInput).sendKeys(email);
     }
 
+    @Step("Ввод пароля")
     public void addPassword(String password) {
         webDriver.findElement(passwordInput).sendKeys(password);
     }
 
+    @Step("Нажатие на кнопу Зарегистрироваться")
     public void clickRegistrationButton() {
         webDriver.findElement(registrationButton).click();
     }
+
+    @Step("Нажатие на ссылку Войти")
     public void clickLoginLink() {
         JavascriptExecutor executor = (JavascriptExecutor) webDriver;
         WebElement link = webDriver.findElement(loginLink);

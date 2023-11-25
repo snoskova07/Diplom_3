@@ -1,4 +1,4 @@
-package org.example.helper;
+package org.example.helper.ui;
 
 import org.example.pageobject.LoginPage;
 
